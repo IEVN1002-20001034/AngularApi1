@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { AlumnosUtl } from '../alumnos';
 import { ProyectoapiService } from '../proyectoapi.service';
 import { RouterLink } from '@angular/router';
- 
- 
+
+
 @Component({
   selector: 'app-alumnos',
   standalone: true,
   imports: [FormsModule,AlumnoFilterPipe, CommonModule,RouterLink],
+ 
   templateUrl: './alumnos.component.html',
   styles: ``
 })
@@ -23,7 +24,7 @@ export default class AlumnosComponent implements OnInit {
   listFilter:string=''
   alumnoTitle!:string
   dataSource:any=[];
-  constructor(public alumnosUtl:ProyectoapiService){}
+  constructor(public alumnos:ProyectoapiService){}
  
   showImage():void{
     this.muestraImg=!this.muestraImg;
@@ -61,7 +62,7 @@ export default class AlumnosComponent implements OnInit {
  
   }
   ngOnInit(): void {
-     this.alumnosUtl.getAlumnos().subscribe(
+     this.alumnos.getAlumnos().subscribe(
       {
         next: response=>{
  
